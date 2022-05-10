@@ -4,6 +4,7 @@ import { ref, type Ref, computed } from 'vue';
 let currentMonth: Ref = ref(new Date().getMonth());
 let currentYear: Ref = ref(new Date().getFullYear());
 const days: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const currentDay: Ref = ref(new Date().getDate());
 
 const prevMonth = () => {
   if (currentMonth.value === 0) {
@@ -39,6 +40,10 @@ const currentMonthInName = computed(() => {
     }
   );
 });
+
+const highlight = (date: number) => {
+  currentDay.value = date;
+};
 </script>
 
 <template>
@@ -81,16 +86,20 @@ const currentMonthInName = computed(() => {
       </div>
     </div>
     <section
-      class="text-white grid grid-cols-7 p-5 text-center text-lg gap-y-4 rounded-b-xl"
+      class="text-white grid grid-cols-7 p-5 text-center text-lg gap-y-4 gap-x-5 rounded-b-xl"
     >
-      <div class="font-medium px-1" v-for="(day, index) in days" :key="index">
+      <div class="font-medium" v-for="(day, index) in days" :key="index">
         {{ day }}
       </div>
       <p v-for="day in startDay()" :key="day" class="text-white"></p>
       <p
         v-for="date in daysInMonth(currentYear, currentMonth)"
         :key="date"
-        class="text-white"
+        class="text-white cursor-pointer py-1"
+        @click="highlight(date)"
+        :class="[
+          date === currentDay ? 'bg-blue-700 rounded-full' : 'bg-gray-900',
+        ]"
       >
         {{ date }}
       </p>
