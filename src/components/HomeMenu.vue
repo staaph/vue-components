@@ -24,7 +24,7 @@
           <Moon v-else @click="toggleTheme" class="h-7 w-7" />
         </button>
         <a
-          href="https://github.com/staaph"
+          href="https://github.com/staaph/vue-components"
           rel="noopener noreferrer nofollow"
           target="_blank"
           class="hover:opacity-50"
