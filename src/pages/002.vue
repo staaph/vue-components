@@ -12,11 +12,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useTitle } from '@vueuse/core';
-useTitle('Input');
-</script>
-
 <style scoped>
 .label {
   @apply absolute left-[10px] top-[14px] py-0 px-[2px] z-10 text-gray-400 transition-all;

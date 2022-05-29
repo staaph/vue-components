@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { ref, type Ref, computed } from 'vue';
-import { useTitle } from '@vueuse/core';
-
-useTitle('Calendar');
 
 const currentDay: Ref<number> = ref(new Date().getDate());
 let currentMonth: Ref<number> = ref(new Date().getMonth());

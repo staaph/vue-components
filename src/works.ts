@@ -15,7 +15,7 @@ export const info = [
     name: 'Spinner',
   },
   {
-    name: 'Payment',
+    name: 'Pricing',
   },
 ];
 
