@@ -1,17 +1,15 @@
 <template>
-  <main class="flex h-screen justify-center items-center">
-    <div class="w-72 relative">
-      <input
-        type="text"
-        id="username"
-        class="text-input"
-        autocomplete="off"
-        placeholder="Enter your username"
-        required
-      />
-      <label class="label" for="username">Username</label>
-    </div>
-  </main>
+  <div class="w-72 relative">
+    <input
+      type="text"
+      id="username"
+      class="text-input"
+      autocomplete="off"
+      placeholder="Enter your username"
+      required
+    />
+    <label class="label" for="username">Username</label>
+  </div>
 </template>
 
 <script setup lang="ts">
