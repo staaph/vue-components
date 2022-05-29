@@ -1,6 +1,6 @@
 # vue_components
 
-A collection of Vue Components using the Composition API and TailwindsCSS.
+A collection of Vue Components using the Composition API and TailwindsCSS. \
 Homepage is inspired by <https://100.antfu.me/>
 
 ## Project Setup
