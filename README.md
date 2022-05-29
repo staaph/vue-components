@@ -1,6 +1,7 @@
 # vue_components
 
-Vue 3 Typescript components, styled with TailwindCSS
+A collection of Vue Components using the Composition API and TailwindsCSS.
+Homepage is inspired by <https://100.antfu.me/>
 
 ## Project Setup
 
@@ -18,16 +19,4 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
