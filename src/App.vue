@@ -4,5 +4,5 @@
 </template>
 
 <script setup lang="ts">
-import HomeMenu from './components/HomeMenu.vue';
+import HomeMenu from '@/components/HomeMenu.vue';
 </script>

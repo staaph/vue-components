@@ -10,8 +10,9 @@
       </div>
       <section
         class="flex flex-col justify-center items-center gap-y-3 opacity-75"
+        v-if="isMenuOpen"
       >
-        <router-link to="/" v-if="isMenuOpen">
+        <router-link to="/">
           <HomeIcon class="w-7 h-7 hover:opacity-50" />
         </router-link>
         <button v-if="isMenuOpen" class="hover:opacity-50">
@@ -22,6 +23,13 @@
           />
           <Moon v-else @click="toggleTheme" class="h-7 w-7" />
         </button>
+        <a
+          href="https://github.com/staaph"
+          rel="noopener noreferrer nofollow"
+          target="_blank"
+          class="hover:opacity-50"
+          ><GithubIcon class="h-6 w-6"
+        /></a>
       </section>
     </div>
   </main>
@@ -32,6 +40,7 @@ import HomeIcon from '@/assets/icons/HomeIcon.vue';
 import ArrowDown from '@/assets/icons/ArrowDown.vue';
 import Moon from '@/assets/icons/MoonIcon.vue';
 import Sun from '@/assets/icons/SunIcon.vue';
+import GithubIcon from '@/assets/icons/GithubIcon.vue';
 import ArrowUp from '@/assets/icons/ArrowUp.vue';
 import { useDark } from '@/composables/useDark';
 import { ref, type Ref } from 'vue';
