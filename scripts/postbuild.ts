@@ -17,8 +17,8 @@ export async function postBuild() {
 
     head.append($(`<meta property="og:title" content="${title}" />`))
 
-    if (fs.existsSync(`public/screenshots/${work.no}.png`)) {
-      head.append($(`<meta property="og:image" content="${DOMAIN}/screenshots/${work.no}.png" />`))
+    if (fs.existsSync(`public/shots/${work.no}.png`)) {
+      head.append($(`<meta property="og:image" content="${DOMAIN}/shots/${work.no}.png" />`))
       head.append($('<meta name="twitter:card" content="summary_large_image" />'))
     }
 
@@ -30,7 +30,7 @@ export async function postBuild() {
   const title = $('title').text()
 
   head.append($(`<meta property="og:title" content="${title}" />`))
-  head.append($(`<meta property="og:image" content="${DOMAIN}/screenshots/index.png" />`))
+  head.append($(`<meta property="og:image" content="${DOMAIN}/shots/index.png" />`))
 
   await fs.writeFile('dist/index.html', $.html(), 'utf-8')
 }
