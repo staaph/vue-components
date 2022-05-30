@@ -17,8 +17,8 @@ export async function postBuild() {
 
     head.append($(`<meta property="og:title" content="${title}" />`))
 
-    if (fs.existsSync(`public/shots/${work.no}.png`)) {
-      head.append($(`<meta property="og:image" content="${DOMAIN}/shots/${work.no}.png" />`))
+    if (fs.existsSync(`public/screenshots/${work.no}.png`)) {
+      head.append($(`<meta property="og:image" content="${DOMAIN}/screenshots/${work.no}.png" />`))
       head.append($('<meta name="twitter:card" content="summary_large_image" />'))
     }
 
