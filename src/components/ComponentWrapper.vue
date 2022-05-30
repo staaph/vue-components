@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ shot }">
     <div class="bottom-nav flex z-10 font-mono" v-if="work">
       <div class="nav-links">
         <router-link class="prev link" v-if="prev" :to="`/${prev.no}`"
@@ -26,6 +26,7 @@ import { useRoute } from 'vue-router';
 import { works } from '@/works';
 
 const route = useRoute();
+const shot = Boolean(route.query.shot);
 let no = route.path.slice(1);
 if (no.startsWith('x')) no = no.slice(1);
 const index = works.findIndex((i) => i.no === no);
