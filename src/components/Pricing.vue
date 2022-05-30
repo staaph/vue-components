@@ -28,8 +28,8 @@
 
       <p class="font-semibold text-gray-400 text-left pt-5">
         <span class="material-icons text-white align-middle"> ✓ </span>
-        <span class="pl-2">
-          Flexible <span class="text-white">team meetings</span>
+        <span class="pl-2 text-white">
+          Flexible <span class="text-gray-400">team meetings</span>
         </span>
       </p>
 

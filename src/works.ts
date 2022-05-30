@@ -17,6 +17,9 @@ export const info = [
   {
     name: 'Pricing',
   },
+  {
+    name: 'Searchbar',
+  },
 ];
 
 export const works = info.map((info, idx) => {
