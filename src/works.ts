@@ -20,6 +20,9 @@ export const info = [
   {
     name: 'Searchbar',
   },
+  {
+    name: 'Contact',
+  },
 ];
 
 export const works = info.map((info, idx) => {

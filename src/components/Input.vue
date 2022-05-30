@@ -1,5 +1,5 @@
 <template>
-  <div class="w-72 relative">
+  <main class="w-72 relative">
     <input
       type="text"
       id="username"
@@ -9,28 +9,28 @@
       required
     />
     <label class="label" for="username">Username</label>
-  </div>
+  </main>
 </template>
 
 <style scoped>
 .label {
-  @apply absolute left-[10px] top-[14px] py-0 px-[2px] z-10 text-gray-400 transition-all;
+  @apply absolute left-[10px] top-[14px] z-10 py-0 px-[2px] text-gray-400 transition-all;
+}
+.label:before {
+  @apply absolute left-0 top-[10px] -z-10 h-1 w-full bg-gray-800 content-[''];
 }
 
 .text-input {
-  @apply p-3 w-full h-full border-2 border-solid border-slate-700 bg-gray-800 transition-all text-white outline-none
-  text-lg rounded-md;
-}
-
-.label:before {
-  @apply bg-gray-800 -z-10 w-full left-0 top-[10px] absolute h-1 content-[''];
+  @apply h-full w-full rounded-md border-2 border-solid border-slate-700 bg-gray-800 p-3 text-lg text-white
+    outline-none transition-all;
 }
 
 .text-input:focus {
-  @apply border-violet-800 border-2 border-solid;
+  @apply border-2 border-solid border-violet-800;
 }
 
-.text-input:focus + .label {
+.text-input:focus + .label,
+.text-input:not(:placeholder-shown) + .label {
   @apply -top-[10px] text-sm text-violet-700;
 }
 
