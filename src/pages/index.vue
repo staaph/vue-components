@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { useTitle } from '@vueuse/core';
 import { works } from '../works';
+import { useRoute } from 'vue-router';
+const route = useRoute();
+const shot = Boolean(route.query.shot);
 
 useTitle('Components');
 </script>
 
 <template>
   <main
+    :class="{ shot }"
     class="grid place-content-center h-screen gap-x-4 gap-y-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
   >
     <router-link
