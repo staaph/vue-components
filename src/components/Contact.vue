@@ -1,7 +1,7 @@
 <template>
-  <main class="">
+  <main class="w-screen flex place-content-center">
     <div
-      class="bg-slate-300 border-black border dark:border-none dark:bg-gray-800 rounded-lg p-5 sm:w-[28rem] w-[22rem]"
+      class="bg-slate-300 border-black border dark:border-none dark:bg-gray-800 rounded-lg p-5 w-11/12 sm:w-8/12 md:w-7/12 lg:w-1/2"
     >
       <h1 class="font-bold text-center mb-4 text-xl text-black dark:text-white">
         Contact me
