@@ -41,7 +41,7 @@
       </p>
 
       <p
-        class="w-full py-4 bg-blue-600 mt-8 rounded-xl text-white hover:opacity-75"
+        class="w-full py-4 bg-blue-600 mt-8 rounded-xl text-white hover:opacity-75 cursor-pointer"
       >
         <span class="font-medium"> Choose Plan </span>
       </p>
