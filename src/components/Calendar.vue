@@ -51,7 +51,7 @@ const currentMonthInName = computed(() => {
 <template>
   <main class="flex justify-center">
     <div
-      class="flex flex-col rounded-b-xl shadow-gray-700 shadow-lg bg-gray-900 w-11/12"
+      class="flex flex-col rounded-b-xl shadow-gray-700 shadow-lg dark:shadow-md dark:shadow-gray-800 bg-gray-900 w-11/12"
     >
       <div
         class="bg-purple-700 flex flex-col w-full justify-center items-center p-5"
@@ -61,7 +61,7 @@ const currentMonthInName = computed(() => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 256 512"
-              class="w-6 h-6 text-gray-300"
+              class="w-6 h-6 text-white"
               fill="currentColor"
             >
               <path
@@ -80,7 +80,7 @@ const currentMonthInName = computed(() => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 256 512"
-              class="w-6 h-6 text-gray-300"
+              class="w-6 h-6 text-white"
               fill="currentColor"
             >
               <path
