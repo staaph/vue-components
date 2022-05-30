@@ -10,7 +10,7 @@ useTitle('Components');
     class="grid place-content-center h-screen gap-x-4 gap-y-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
   >
     <router-link
-      class="flex flex-row opacity-75 hover:opacity-100"
+      class="flex font-mono flex-row opacity-75 hover:opacity-100"
       v-for="work of works"
       :key="work.no"
       :to="`/${work.no}`"

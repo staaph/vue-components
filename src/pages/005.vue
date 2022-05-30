@@ -1,22 +1,9 @@
 <template>
-  <div class="spinner text-black dark:text-white"></div>
+  <wrapper>
+    <Spinner />
+  </wrapper>
 </template>
 
-<style scoped>
-.spinner {
-  width: 50px;
-  height: 50px;
-  border-top: 1px solid;
-  border-radius: 50%;
-  animation: rotate 1s linear infinite;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-</style>
+<script setup lang="ts">
+import Spinner from '@/components/Spinner.vue';
+</script>
