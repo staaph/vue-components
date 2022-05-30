@@ -1,5 +1,5 @@
 <template>
-  <div
+  <main
     class="w-80 p-8 mt-5 bg-gray-800 dark:bg-slate-800 text-white text-center rounded-2xl shadow-sm lg:shadow-xl transform scale-105"
   >
     <!-- BADGE -->
@@ -20,7 +20,7 @@
 
     <hr class="mt-4 border-1 border-gray-600" />
 
-    <div class="pt-8">
+    <section class="pt-8">
       <p class="font-semibold text-left">
         <span class="material-icons align-middle"> ✓ </span>
         <span class="pl-2"> Get access to all Templates </span>
@@ -40,11 +40,11 @@
         </span>
       </p>
 
-      <p
-        class="w-full py-4 bg-blue-600 mt-8 rounded-xl text-white hover:opacity-75 cursor-pointer"
+      <button
+        class="w-full py-4 bg-blue-600 mt-8 rounded-xl text-white hover:opacity-75"
       >
         <span class="font-medium"> Choose Plan </span>
-      </p>
-    </div>
-  </div>
+      </button>
+    </section>
+  </main>
 </template>
