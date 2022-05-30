@@ -31,11 +31,8 @@ let no = route.path.slice(1);
 if (no.startsWith('x')) no = no.slice(1);
 const index = works.findIndex((i) => i.no === no);
 const work = works[index];
-console.log(work);
 const prev = works[index - 1];
-console.log(prev);
 const next = works[index + 1];
-console.log(next);
 useTitle(work ? `${no}. ${work.name}` : '404');
 </script>
 
