@@ -1,6 +1,8 @@
 <template>
   <main class="absolute top-4 left-4 dark:text-white text-black">
-    <div class="flex flex-row sm:flex-col gap-x-8 sm:gap-y-4">
+    <div
+      class="flex flex-row sm:flex-col gap-x-8 sm:gap-y-4 items-center justify-center"
+    >
       <div
         @click="isMenuOpen = !isMenuOpen"
         class="cursor-pointer h-8 w-8 sm:h-7 sm:w-7 text-gray-400 hover:text-gray-500 flex justify-center items-center"
@@ -32,6 +34,15 @@
           class="hover:opacity-50"
           ><GithubIcon class="sm:w-7 sm:h-7 h-8 w-8"
         /></a>
+        <a
+          v-if="work"
+          :href="`https://github.com/staaph/vue-components/tree/master/src/components/${work.name}.vue`"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="text-sm text-center opacity-50 hover:opacity-100 cursor-pointer"
+        >
+          {{ work.no }}</a
+        >
       </section>
     </div>
   </main>
@@ -48,6 +59,14 @@ import Sun from '@/assets/icons/SunIcon.vue';
 import GithubIcon from '@/assets/icons/GithubIcon.vue';
 import { useDark } from '@/composables/useDark';
 import { ref, type Ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { works } from '@/works';
+
+const route = useRoute();
+let no = route.path.slice(1);
+if (no.startsWith('x')) no = no.slice(1);
+const index = works.findIndex((i) => i.no === no);
+const work = works[index];
 
 const { userTheme, toggleTheme } = useDark();
 const isMenuOpen: Ref<boolean> = ref(false);

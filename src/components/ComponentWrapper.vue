@@ -23,9 +23,20 @@
 
 <script setup lang="ts">
 import HomeMenu from '@/components/HomeMenu.vue';
-import { useTitle } from '@vueuse/core';
+import { useTitle, useEventListener, useFullscreen } from '@vueuse/core';
 import { useRoute } from 'vue-router';
 import { works } from '@/works';
+import { ref } from 'vue';
+
+const fullscreen = useFullscreen(ref(document.querySelector('html')));
+useEventListener('keydown', (e) => {
+  if (document.activeElement === document.body) {
+    if (e.key === 'f') {
+      if (fullscreen.isFullscreen.value) fullscreen.exit();
+      else fullscreen.enter();
+    }
+  }
+});
 
 const route = useRoute();
 let no = route.path.slice(1);

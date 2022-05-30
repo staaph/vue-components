@@ -4,6 +4,6 @@
 
 @layer base{
     body{
-    @apply dark:bg-gray-900 dark:text-white flex h-screen justify-center items-center bg-white
+    @apply dark:bg-gray-900 dark:text-white grid h-screen place-content-center bg-white
     }
 }
