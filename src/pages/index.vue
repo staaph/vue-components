@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useTitle } from '@vueuse/core';
-import { works } from '../works';
+import { onMounted } from 'vue';
+import { works } from '@/works';
 
-useTitle('Components');
+onMounted(() => {
+  useTitle('Components');
+});
 </script>
 
 <template>
