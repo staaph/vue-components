@@ -1,5 +1,6 @@
 <template>
   <div>
+    <HomeMenu class="z-10" />
     <div class="bottom-nav flex z-10 font-mono" v-if="work">
       <div class="nav-links">
         <router-link class="prev link" v-if="prev" :to="`/${prev.no}`"
@@ -21,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import HomeMenu from '@/components/HomeMenu.vue';
 import { useTitle } from '@vueuse/core';
 import { useRoute } from 'vue-router';
 import { works } from '@/works';
