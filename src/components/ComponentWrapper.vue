@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <HomeMenu class="z-10" />
     <div class="bottom-nav flex z-10 font-mono" v-if="work">
       <div class="nav-links">
@@ -18,7 +18,7 @@
       </div>
     </div>
     <slot :work="work"></slot>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

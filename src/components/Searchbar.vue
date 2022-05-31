@@ -3,13 +3,16 @@ import { ref, type Ref, onMounted, onUnmounted } from 'vue';
 
 const metaKey: Ref = ref();
 const searchbar: Ref = ref();
+const input: Ref<string | undefined> = ref();
 
 const handleSearchHotKey = (e: KeyboardEvent) => {
   if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
     e.preventDefault();
-    document.activeElement != document.body
-      ? (document.activeElement as HTMLElement).blur()
-      : searchbar.value.focus();
+    if (document.activeElement != document.body) {
+      (document.activeElement as HTMLElement).blur();
+    } else {
+      searchbar.value.focus();
+    }
   }
   e.key === 'Escape' ? (document.activeElement as HTMLElement).blur() : null;
 };
@@ -49,13 +52,17 @@ onUnmounted(() => {
         autocomplete="off"
         ref="searchbar"
         type="text"
-        class="p-[10px] pl-11 w-full rounded-lg text-sm input dark:border-gray-600 dark:placeholder-gray-400 focus:outline-blue-600 bg-gray-300"
+        class="p-[10px] pl-11 rounded-lg text-sm input dark:border-gray-600 dark:placeholder-gray-400 focus:outline-blue-600 bg-gray-300"
         placeholder="Search..."
+        v-model="input"
       />
       <div
         class="flex absolute inset-y-0 right-0 items-center pr-1 pointer-events-none gap-x-1"
       >
-        <div class="bg-gray-800 px-1.5 py-0.5 rounded-md scale-90 text-white">
+        <div
+          class="bg-gray-800 px-1.5 py-0.5 rounded-md scale-90 text-white"
+          v-show="!input"
+        >
           <span ref="metaKey">Meta</span>
           <span>&nbsp;+&nbsp;K</span>
         </div>
