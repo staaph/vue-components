@@ -1,6 +1,11 @@
 <template>
   <wrapper>
-    <button @click="isModalOpen = !isModalOpen">Open</button>
+    <button
+      @click="isModalOpen = !isModalOpen"
+      class="bg-gray-300 px-3 py-1.5 rounded-lg text-black"
+    >
+      Open
+    </button>
     <Modal :data="props" v-if="isModalOpen" class="center w-screen h-screen" />
   </wrapper>
 </template>
