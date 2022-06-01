@@ -23,6 +23,9 @@ export const info = [
   {
     name: 'Contact',
   },
+  {
+    name: 'Modal',
+  },
 ];
 
 export const works = info.map((info, idx) => {
