@@ -52,7 +52,7 @@ onUnmounted(() => {
         autocomplete="off"
         ref="searchbar"
         type="text"
-        class="p-[10px] pl-11 rounded-lg text-sm input dark:border-gray-600 dark:placeholder-gray-400 focus:outline-blue-600 bg-gray-300"
+        class="p-[10px] pl-11 rounded-lg text-sm input text-black dark:border-gray-600 dark:placeholder-gray-400 focus:outline-blue-600 bg-gray-300"
         placeholder="Search..."
         v-model="input"
       />
