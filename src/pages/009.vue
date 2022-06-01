@@ -1,7 +1,7 @@
 <template>
   <wrapper>
     <button @click="isModalOpen = !isModalOpen">Open</button>
-    <Modal v-if="isModalOpen" class="center w-screen h-screen" />
+    <Modal :data="props" v-if="isModalOpen" class="center w-screen h-screen" />
   </wrapper>
 </template>
 
@@ -11,6 +11,21 @@ import Modal from '@/components/Modal.vue';
 import { ref } from 'vue';
 
 const isModalOpen = ref(false);
+
+const props = [
+  {
+    title: 'test1',
+    content: 'content1',
+    titleRight: 'Title 1',
+    contentRight: 'content 1',
+  },
+  {
+    title: 'test2',
+    content: 'content2',
+    titleRight: 'Title 2',
+    contentRight: 'content 2',
+  },
+];
 </script>
 
 <style setup>

@@ -1,5 +1,7 @@
 <template>
-  <dialog class="w-[90%] md:w-8/12 rounded-lg flex">
+  <dialog
+    class="w-[90%] md:w-8/12 rounded-lg flex shadow-xl border dark:shadow-none dark:border-none"
+  >
     <main class="flex flex-row w-full relative">
       <!-- LEFT -->
       <section class="w-5/12 relative">
@@ -78,22 +80,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, type PropType } from 'vue';
 
-const items = [
-  {
-    title: 'test1',
-    content: 'content1',
-    titleRight: 'Title 1',
-    contentRight: 'content 1',
+export interface Props {
+  title: string;
+  content: string;
+  titleRight: string;
+  contentRight: string;
+}
+
+const props = defineProps({
+  data: {
+    type: Object as PropType<Array<Props>>,
+    required: true,
   },
-  {
-    title: 'test2',
-    content: 'content2',
-    titleRight: 'Title 2',
-    contentRight: 'content 2',
-  },
-];
+});
+
+const items = props.data.map((i) => i);
 
 const currentIndex = ref(0);
 const currentItem = computed(() => items[currentIndex.value]);
@@ -128,12 +131,12 @@ dialog {
 }
 
 .arrowRight {
-  @apply absolute right-0 top-1/2 p-1 rounded-full bg-gray-200;
+  @apply absolute right-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400;
   margin-right: -1rem;
 }
 
 .arrowLeft {
-  @apply absolute left-0 top-1/2 p-1 rounded-full bg-gray-200;
+  @apply absolute left-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400;
   margin-left: -1rem;
 }
 </style>
