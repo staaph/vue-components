@@ -28,6 +28,7 @@
       <!-- RIGHT -->
       <section
         class="w-7/12 right-side relative flex justify-start items-center"
+        :style="`background-image:linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 100%), url(${props.image});`"
       >
         <div class="left-2">
           <h1 class="title">{{ currentItem.titleRight }}</h1>
@@ -94,6 +95,10 @@ const props = defineProps({
     type: Object as PropType<Array<Props>>,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 
 const items = props.data.map((i) => i);
@@ -104,12 +109,6 @@ const currentItem = computed(() => items[currentIndex.value]);
 
 <style scoped>
 .right-side {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.2) 0%,
-      rgba(255, 255, 255, 0.2) 100%
-    ),
-    url('@/assets/ModalBack1.jpg');
   height: 100%;
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;

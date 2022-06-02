@@ -6,12 +6,18 @@
     >
       Open
     </button>
-    <Modal :data="props" v-if="isModalOpen" class="center w-screen h-screen" />
+    <Modal
+      :data="props"
+      :image="ModalBack1"
+      v-if="isModalOpen"
+      class="center w-screen h-screen"
+    />
   </wrapper>
 </template>
 
 <script setup lang="ts">
 import Modal from '@/components/Modal.vue';
+import ModalBack1 from '@/assets/ModalBack1.jpg';
 
 import { ref } from 'vue';
 
