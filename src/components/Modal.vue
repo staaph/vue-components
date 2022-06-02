@@ -1,83 +1,90 @@
 <template>
-  <dialog
-    class="w-[90%] md:w-8/12 rounded-lg flex shadow-xl border dark:shadow-none dark:border-none"
+  <button
+    @click="isModalOpen = !isModalOpen"
+    v-if="!isModalOpen"
+    class="bg-gray-300 px-3 py-1.5 rounded-lg text-black"
   >
-    <main class="flex flex-row w-full relative">
-      <!-- LEFT -->
-      <section class="w-5/12 relative">
-        <div class="grid h-full w-full place-content-center">
-          <div class="px-8">
-            <div>
-              <h1 class="text-lg font-medium">{{ currentItem.title }}</h1>
-              <p class="text">{{ currentItem.content }}</p>
+    Open
+  </button>
+  <main v-if="isModalOpen" class="backdrop">
+    <div class="dialog">
+      <div class="flex flex-row w-full relative">
+        <!-- LEFT -->
+        <section class="w-5/12 relative text-black">
+          <div class="grid h-full w-full place-content-center">
+            <div class="px-8">
+              <div>
+                <h1 class="text-lg font-medium">{{ currentItem.title }}</h1>
+                <p class="text">{{ currentItem.content }}</p>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-[10%] w-full justify-center flex flex-row gap-x-2"
+            >
+              <div v-for="(item, idx) in items" :key="idx">
+                <button
+                  @click="currentIndex = idx"
+                  class="bg-gray-300 h-2 w-2 rounded-full hover:bg-gray-400"
+                  :class="{ 'bg-gray-400': currentIndex === idx }"
+                ></button>
+              </div>
             </div>
           </div>
-          <div
-            class="absolute bottom-[10%] w-full justify-center flex flex-row gap-x-2"
+        </section>
+        <!-- RIGHT -->
+        <section
+          class="w-7/12 right-side relative flex justify-start items-center text-black"
+          :style="`background-image:linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 100%), url(${props.image});`"
+        >
+          <div class="left-2">
+            <h1 class="title">{{ currentItem.titleRight }}</h1>
+            <p class="p-14">{{ currentItem.contentRight }}</p>
+          </div>
+        </section>
+        <!-- Buttons -->
+        <button
+          class="arrowLeft"
+          v-if="currentIndex != 0"
+          @click="currentIndex -= 1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
           >
-            <div v-for="(item, idx) in items" :key="idx">
-              <button
-                @click="currentIndex = idx"
-                class="bg-gray-300 h-2 w-2 rounded-full hover:bg-gray-400"
-                :class="{ 'bg-gray-400': currentIndex === idx }"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- RIGHT -->
-      <section
-        class="w-7/12 right-side relative flex justify-start items-center"
-        :style="`background-image:linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 100%), url(${props.image});`"
-      >
-        <div class="left-2">
-          <h1 class="title">{{ currentItem.titleRight }}</h1>
-          <p class="p-14">{{ currentItem.contentRight }}</p>
-        </div>
-      </section>
-      <!-- Buttons -->
-      <button
-        class="arrowLeft"
-        v-if="currentIndex != 0"
-        @click="currentIndex -= 1"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11 17l-5-5m0 0l5-5m-5 5h12"
+            />
+          </svg>
+        </button>
+        <button
+          class="arrowRight"
+          v-if="currentIndex != items.length - 1"
+          @click="currentIndex += 1"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M11 17l-5-5m0 0l5-5m-5 5h12"
-          />
-        </svg>
-      </button>
-      <button
-        class="arrowRight"
-        v-if="currentIndex != items.length - 1"
-        @click="currentIndex += 1"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          />
-        </svg>
-      </button>
-    </main>
-  </dialog>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -101,13 +108,25 @@ const props = defineProps({
   },
 });
 
+const isModalOpen = ref(false);
 const items = props.data.map((i) => i);
-
 const currentIndex = ref(0);
 const currentItem = computed(() => items[currentIndex.value]);
 </script>
 
 <style scoped>
+.dialog {
+  @apply w-[90%] md:w-8/12 h-[60%] rounded-lg flex shadow-xl border dark:shadow-none dark:border-none z-50 bg-white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.backdrop {
+  @apply w-screen h-screen z-10;
+  background: rgba(0, 0, 0, 0.3);
+}
 .right-side {
   height: 100%;
   border-top-right-radius: 0.5rem;
@@ -115,11 +134,6 @@ const currentItem = computed(() => items[currentIndex.value]);
   background-position: right;
   background-size: cover;
 }
-dialog {
-  padding: 0;
-  height: 60%;
-}
-
 .title {
   color: #919364;
   font-size: 2rem;
@@ -128,14 +142,12 @@ dialog {
   top: 20%;
   left: 10%;
 }
-
 .arrowRight {
-  @apply absolute right-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400;
+  @apply absolute right-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400 text-black;
   margin-right: -1rem;
 }
-
 .arrowLeft {
-  @apply absolute left-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400;
+  @apply absolute left-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400 text-black;
   margin-left: -1rem;
 }
 </style>
