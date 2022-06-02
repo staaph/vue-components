@@ -10,10 +10,10 @@ import ModalBack1 from '@/assets/ModalBack1.jpg';
 
 const props = [
   {
-    title: 'test1',
-    content: 'content1',
-    titleRight: 'Title 1',
-    contentRight: 'content 1',
+    title: 'Modal',
+    content: 'Background gets blurred',
+    titleRight: 'Dynamic',
+    contentRight: 'pass props for Title, Content & Image',
   },
   {
     title: 'test2',
