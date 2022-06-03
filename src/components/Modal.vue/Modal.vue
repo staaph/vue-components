@@ -130,10 +130,10 @@ const { modal, backdrop, button, isModalOpen, openModal } = useBackdrop();
 }
 .arrowRight {
   @apply absolute right-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400 text-black;
-  margin-right: -1rem;
+  margin-right: -15px;
 }
 .arrowLeft {
   @apply absolute left-0 top-1/2 p-1 rounded-full bg-gray-300 border border-gray-400 text-black;
-  margin-left: -1rem;
+  margin-left: -15px;
 }
 </style>
