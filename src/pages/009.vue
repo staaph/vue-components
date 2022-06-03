@@ -11,7 +11,7 @@ import ModalBack1 from '@/assets/ModalBack1.jpg';
 const props = [
   {
     title: 'Modal',
-    content: 'Background gets blurred',
+    content: 'Background gets blurred. Click outside to close',
     titleRight: 'Dynamic',
     contentRight: 'pass props for Title, Content & Image',
   },
