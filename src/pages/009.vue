@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import Modal from '@/components/Modal.vue';
+import Modal from '@/components/Modal.vue/Modal.vue';
 import ModalBack1 from '@/assets/ModalBack1.jpg';
 
 const props = [

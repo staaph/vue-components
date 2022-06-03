@@ -8,33 +8,34 @@
     >
       Open
     </button>
+    <!-- MODAL -->
     <section ref="modal">
       <div class="backdrop" ref="backdrop" v-if="isModalOpen">
         <div class="dialog">
           <div class="flex flex-row w-full relative">
-            <!-- LEFT -->
+            <!-- LEFT SECTION -->
             <section class="w-5/12 relative text-black">
               <div class="grid h-full w-full place-content-center">
-                <div class="px-8">
+                <section class="px-8">
                   <div>
                     <h1 class="text-lg font-medium">{{ currentItem.title }}</h1>
                     <p class="text break-words">{{ currentItem.content }}</p>
                   </div>
-                </div>
+                </section>
                 <div
                   class="absolute bottom-[10%] w-full justify-center flex flex-row gap-x-2"
                 >
-                  <div v-for="(item, idx) in items" :key="idx">
+                  <section v-for="(item, idx) in items" :key="idx">
                     <button
                       @click="currentIndex = idx"
                       class="bg-gray-300 h-2 w-2 rounded-full hover:bg-gray-400"
                       :class="{ 'bg-gray-400': currentIndex === idx }"
                     ></button>
-                  </div>
+                  </section>
                 </div>
               </div>
             </section>
-            <!-- RIGHT -->
+            <!-- RIGHT SECTION -->
             <section
               class="w-7/12 right-side relative flex justify-start items-center text-black"
               :style="`background-image:linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.7) 100%), url(${props.image});`"
@@ -50,40 +51,14 @@
               v-if="currentIndex != 0"
               @click="currentIndex -= 1"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11 17l-5-5m0 0l5-5m-5 5h12"
-                />
-              </svg>
+              <ArrowLeft />
             </button>
             <button
               class="arrowRight"
               v-if="currentIndex != items.length - 1"
               @click="currentIndex += 1"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
+              <ArrowRight />
             </button>
           </div>
         </div>
@@ -93,14 +68,10 @@
 </template>
 
 <script setup lang="ts">
-import {
-  ref,
-  onMounted,
-  onUnmounted,
-  computed,
-  type Ref,
-  type PropType,
-} from 'vue';
+import { ref, computed, type PropType } from 'vue';
+import { useBackdrop } from './useBackdrop';
+import ArrowRight from './ArrowRight.vue';
+import ArrowLeft from './ArrowLeft.vue';
 
 export interface Props {
   title: string;
@@ -123,49 +94,6 @@ const props = defineProps({
 const items = props.data.map((i) => i);
 const currentIndex = ref(0);
 const currentItem = computed(() => items[currentIndex.value]);
-
-// backdrop
-const useBackdrop = () => {
-  const backdrop: Ref = ref();
-  const modal: Ref = ref();
-  const button: Ref = ref();
-  const isModalOpen: Ref<boolean> = ref(false);
-
-  onMounted(() => {
-    modal.value.style.display = 'none';
-  });
-
-  const resetIndex = () => {
-    currentIndex.value = 0;
-  };
-
-  const outsideClick = (e: Event) => {
-    if (e.target == backdrop.value) {
-      modal.value.style.display = 'none';
-      isModalOpen.value = false;
-      resetIndex();
-    }
-  };
-
-  const openModal = () => {
-    modal.value.style.display = 'flex';
-    isModalOpen.value = true;
-  };
-
-  const closeModal = () => {
-    modal.value.style.display = 'none';
-    isModalOpen.value = false;
-  };
-
-  onMounted(() => {
-    window.addEventListener('click', outsideClick);
-  });
-
-  onUnmounted(() => {
-    window.removeEventListener('click', outsideClick);
-  });
-  return { backdrop, modal, button, isModalOpen, openModal, closeModal };
-};
 
 const { modal, backdrop, button, isModalOpen, openModal } = useBackdrop();
 </script>
